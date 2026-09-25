@@ -42,7 +42,6 @@ setInterval(updateViewerCount, VIEWER_TICK);
 /* ════════════════════════════════
    SOCIAL PROOF NOTIFICATIONS
    Notifications begin at 20:50 of video playback.
-   Comments are revealed at 21:00 of video playback.
 ════════════════════════════════ */
 /* Modo de teste: abrir a página com ?notif_test=10 dispara aos 10s de vídeo */
 const notifTestParam   = new URLSearchParams(location.search).get('notif_test');
@@ -145,19 +144,10 @@ function startNotifications() {
       abertos) atrás do <video> e lê currentTime diretamente.
    Em ambos os casos o relógio é o do próprio vídeo — pausou, parou. */
 let notifStarted = false;
-const COMMENTS_VIDEO_TIME = 21 * 60; // 20:60 = 21:00
-let commentsRevealed = false;
 
 function triggerNotifsIfTime(t) {
     if (typeof t !== 'number' || !Number.isFinite(t)) return;
 
-    if (!commentsRevealed && t >= COMMENTS_VIDEO_TIME) {
-        const comments = document.querySelector('.comments-section');
-        if (comments) {
-            comments.hidden = false;
-            commentsRevealed = true;
-        }
-    }
     if (!notifStarted && typeof t === 'number' && t >= NOTIF_VIDEO_TIME) {
         notifStarted = true;
         startNotifications();
@@ -166,7 +156,7 @@ function triggerNotifsIfTime(t) {
 
 /* Método 1 — API oficial do smartplayer */
 (function hookSmartplayer(attempts) {
-    if (notifStarted && commentsRevealed) return;
+    if (notifStarted) return;
     if (typeof smartplayer === 'undefined' || !smartplayer.instances || !smartplayer.instances.length) {
         if (attempts >= 60) return; // desiste após ~60s (fallback continua ativo)
         return setTimeout(() => hookSmartplayer(attempts + 1), 1000);
@@ -198,7 +188,7 @@ function findVideo(root) {
 
 let notifVideoEl = null;
 const notifPoll = setInterval(() => {
-    if (notifStarted && commentsRevealed) { clearInterval(notifPoll); return; }
+    if (notifStarted) { clearInterval(notifPoll); return; }
     if (!notifVideoEl || !notifVideoEl.isConnected) notifVideoEl = findVideo(document);
     if (notifVideoEl) triggerNotifsIfTime(notifVideoEl.currentTime);
 }, 1000);
