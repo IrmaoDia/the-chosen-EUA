@@ -568,3 +568,14 @@ body {
     .video-options p { font-size: 16px; }
     .video-btn       { font-size: 14px; padding: 11px 14px; }
 }
+
+/* Reveal only the two scheduled comments when their video times are reached. */
+.comment--timed { display: none; }
+.comment--timed.comment--shown {
+    display: flex;
+    animation: comment-in 0.45s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+@keyframes comment-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: none; }
+}
