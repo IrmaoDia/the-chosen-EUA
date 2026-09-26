@@ -146,8 +146,7 @@
             <div class="offer">
                 <h2>Ancient Manuscript</h2>
                 <p>Complete digital edition, 7 chapters.</p>
-                <!-- Replace with the actual price. -->
-                <div class="price">US$ 00</div>
+                <div class="price">US$ 23.90</div>
                 <p class="price-note">One-time payment · no subscription or recurring charges</p>
                 <ul class="includes">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>All 7 chapters in a single PDF file</span></li>
@@ -155,8 +154,7 @@
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Permanent access, with no expiration date</span></li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>7-day money-back guarantee</span></li>
                 </ul>
-                <!-- Replace href with the actual checkout link. -->
-                <a class="cta" href="#">Buy the digital edition</a>
+                <a class="cta" href="https://pay.hotmart.com/N107762996G?off=7dyou5d8">Buy the digital edition</a>
                 <p class="cta-note">Payment processed in a secure environment</p>
             </div>
         </div>
