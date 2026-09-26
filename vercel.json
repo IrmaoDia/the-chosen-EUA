@@ -1,7 +1,29 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/whit", "destination": "/white.index" },
+    { "source": "/white", "destination": "/white.index" }
+  ],
   "headers": [
+    {
+      "source": "/whit",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/white",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/white.index",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [
