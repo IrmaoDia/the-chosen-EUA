@@ -48,7 +48,7 @@ setInterval(updateViewerCount, VIEWER_TICK);
 const notifTestParam   = new URLSearchParams(location.search).get('notif_test');
 const NOTIF_VIDEO_TIME = notifTestParam
     ? parseInt(notifTestParam, 10)
-    : 20 * 60 + 43; // 20:43 do vídeo (em segundos)
+    : 21 * 60 + 30; // 21:30 do vídeo (em segundos)
 const NOTIF_TOTAL      = 18;           // total de notificações da sequência
 const NOTIF_DURATION   = 6000;         // 6s visível na tela
 const NOTIF_FADE       = 800;          // entrada + saída da animação
@@ -251,7 +251,7 @@ function revealCommentsIfTime(t) {
     }
 }
 
-/* Dispara quando o VÍDEO chega em NOTIF_VIDEO_TIME (20:43).
+/* Dispara quando o VÍDEO chega em NOTIF_VIDEO_TIME (21:30).
    O <video> do Vturb fica dentro de shadow DOM, então eventos de mídia
    não chegam ao document. Usamos dois métodos:
    1. API oficial do smartplayer (global exposto pela ConverteAI)
