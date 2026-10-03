@@ -9,19 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ════════════════════════════════
    VIEWER COUNTER
+   topViewerCount  → viewers shown in the red live bar (slightly higher)
    bottomViewerCount → "people are watching now" bar (base count)
+   Both driven by the same variable; top = base + offset so they
+   always differ but move together.
 ════════════════════════════════ */
 const VIEWER_MIN    = 650;
 const VIEWER_MAX    = 750;
 const VIEWER_INIT   = 682;   // base starting count
+const VIEWER_OFFSET = 8;     // top bar always shows this many more
 const VIEWER_TICK   = 3500;  // ms between updates
 
 let viewerCount = VIEWER_INIT;
 
 const elBottom = document.getElementById('bottomViewerCount');
+const elTop    = document.getElementById('topViewerCount');
 
 function renderCounts() {
     if (elBottom) elBottom.textContent = viewerCount;
+    if (elTop)    elTop.textContent    = viewerCount;
 }
 
 function updateViewerCount() {
@@ -30,7 +36,7 @@ function updateViewerCount() {
     renderCounts();
 }
 
-renderCounts();                           // set count on first paint
+renderCounts();                           // set both on first paint
 setInterval(updateViewerCount, VIEWER_TICK);
 
 /* ════════════════════════════════
